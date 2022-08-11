@@ -1,0 +1,3 @@
+muted_category:
+  default: 'Events'
+  type: 'list'

@@ -1,0 +1,30 @@
+<script type="text/discourse-plugin" version="0.8">
+
+    const muted_category = settings.muted_category
+    const currentUser = api.getCurrentUser();
+    
+    api.onPageChange(() => {
+        
+        const post = document.querySelector('tr.category-`${muted_category.slug}`');
+        const posts = document.querySelectorAll('tr.category-`${muted_category.slug}`');
+       
+        const route = api.container.lookup("router:main");
+        if(route.currentPath === "discovery.latest" && post){
+           
+            if(!currentUser || !currentUser.admin){
+                
+                posts.forEach(post =>{
+                    post.classList.add('do-not-display');
+                })
+    
+            } 
+        } else {
+            if (post && post.classList.contains('do-not-display')){
+                posts.forEach(post => post.classList.remove('do-not-display'));
+            }
+        }
+    })
+    
+    
+    </script> 
+    
