@@ -22,9 +22,7 @@
     
             } 
         } else {
-            console.log(post.classList);
             if (post && post.classList.contains('do-not-display')){
-                console.log("removing class");
                 posts.forEach(post => post.classList.remove('do-not-display'));
             }
         }
