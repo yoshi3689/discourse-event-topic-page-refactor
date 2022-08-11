@@ -12,7 +12,7 @@
         
        
         const route = api.container.lookup("router:main");
-        if(route.currentPath === "discovery.latest" && post){
+        if((route.currentPath === "discovery.categories" || route.currentPath === "discovery.latest" ) && post){
            
             if(!currentUser || !currentUser.admin){
                 
