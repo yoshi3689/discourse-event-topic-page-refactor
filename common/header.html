@@ -6,25 +6,39 @@
     
     api.onPageChange(() => {
 
-        const post = document.querySelector(`tr.category-${muted_category}`);
-        const posts = document.querySelectorAll(`tr.category-${muted_category}`);
-        //console.log("currentURL", `tr.category-${muted_category}`);
+        const postTr = document.querySelector(`tr.category-${muted_category}`);
+        const postTrs = document.querySelectorAll(`tr.category-${muted_category}`);
+
+        const postDiv = document.querySelector(`div.category-${muted_category}`);
+        const postDivs = document.querySelectorAll(`div.category-${muted_category}`);
         
        
         const route = api.container.lookup("router:main");
-        if((route.currentPath === "discovery.categories" || route.currentPath === "discovery.latest" ) && post){
+        if(route.currentPath === "discovery.latest"  && postTr){
            
             if(!currentUser || !currentUser.admin){
                 
-                posts.forEach(post =>{
+                postTrs.forEach(post =>{
                     post.classList.add('do-not-display');
                 })
     
             } 
-        } else {
-            if (post && post.classList.contains('do-not-display')){
-                posts.forEach(post => post.classList.remove('do-not-display'));
-            }
+        } else if(route.currentPath === "discovery.categories"  && postDiv){
+            if(!currentUser || !currentUser.admin){
+                
+                postDivs.forEach(post =>{
+                    post.classList.add('do-not-display');
+                })
+    
+            } 
+        }
+        
+        else {
+            if (postTr && postTr.classList.contains('do-not-display')){
+                postTrs.forEach(post => post.classList.remove('do-not-display'));
+            } else if (postDiv && postDiv.classList.contains('do-not-display')){
+                postDivs.forEach(post => post.classList.remove('do-not-display'));
+            } 
         }
     })
     
