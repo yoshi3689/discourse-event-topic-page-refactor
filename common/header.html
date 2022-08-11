@@ -9,8 +9,6 @@
         posts = document.querySelectorAll('tr.category-events');
         console.log("currentURL", 'tr.category-`${muted_category}`');
         
-        <!-- const post = document.querySelector('tr.category-`${muted_category.slug}`');
-        const posts = document.querySelectorAll('tr.category-`${muted_category.slug}`'); -->
        
         const route = api.container.lookup("router:main");
         if(route.currentPath === "discovery.latest" && post){
