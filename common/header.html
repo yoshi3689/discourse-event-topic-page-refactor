@@ -1,14 +1,14 @@
 <script type="text/discourse-plugin" version="0.8">
 
     const muted_category = settings.muted_category.replace(/\s+/g, '-').toLowerCase();
-    console.log("muted category", muted_category);
+    //console.log("muted category", muted_category);
     const currentUser = api.getCurrentUser();
     
     api.onPageChange(() => {
 
-        const post = document.querySelector('tr.category-events');
-        const posts = document.querySelectorAll('tr.category-events');
-        console.log("currentURL", 'tr.category-`${muted_category}`');
+        const post = document.querySelector(`tr.category-${muted_category}`);
+        const posts = document.querySelectorAll(`tr.category-${muted_category}`);
+        //console.log("currentURL", `tr.category-${muted_category}`);
         
        
         const route = api.container.lookup("router:main");
@@ -22,7 +22,9 @@
     
             } 
         } else {
+            console.log(post.classList);
             if (post && post.classList.contains('do-not-display')){
+                console.log("removing class");
                 posts.forEach(post => post.classList.remove('do-not-display'));
             }
         }
