@@ -1,6 +1,7 @@
 <script type="text/discourse-plugin" version="0.8">
 
     const muted_category = settings.muted_category.replace(/\s+/g, '-').toLowerCase();
+    console.log("muted category", muted_category);
     const currentUser = api.getCurrentUser();
     
     api.onPageChange(() => {
